@@ -9,7 +9,11 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
+    
+    @IBAction func pushEditAction(_ sender: Any) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+    }
+    
     @IBAction func pushAddAction(_ sender: Any) {
         let alertController = UIAlertController(title: "Create new item", message: nil, preferredStyle: .alert)
         alertController.addTextField { (textField) in
@@ -101,12 +105,14 @@ class TableViewController: UITableViewController {
     
     }
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        
+        moveItem(from: fromIndexPath.row, to: to.row)
+        
+        tableView.reloadData()
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.

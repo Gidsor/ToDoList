@@ -32,6 +32,12 @@ func removeItem(at index: Int) {
     ToDoItems.remove(at: index)
 }
 
+func moveItem(from: Int, to: Int) {
+    let fromItem = ToDoItems[from]
+    ToDoItems.remove(at: from)
+    ToDoItems.insert(fromItem, at: to)
+}
+
 func changeState(at item: Int) -> Bool {
     ToDoItems[item]["isCompleted"] = !(ToDoItems[item]["isCompleted"] as! Bool)
     saveData()
