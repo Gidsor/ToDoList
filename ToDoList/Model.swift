@@ -8,16 +8,28 @@
 
 import Foundation
 
-var ToDoItems: [[String: Any]] = []
+var ToDoItems: [[String: Any]] {
+    set {
+        UserDefaults.standard.set(newValue, forKey: "ToDoDataKey")
+        UserDefaults.standard.synchronize()
+    }
+    
+    get {
+        
+        if let array = UserDefaults.standard.array(forKey: "ToDoDataKey") as? [[String: Any]] {
+            return array
+        } else {
+            return []
+        }
+    }
+}
 
 func addItem(nameItem: String, isCompleted: Bool = false) {
     ToDoItems.append(["Name": nameItem, "isCompleted": isCompleted])
-    saveData()
 }
 
 func removeItem(at index: Int) {
     ToDoItems.remove(at: index)
-    saveData()
 }
 
 func changeState(at item: Int) -> Bool {
@@ -27,14 +39,7 @@ func changeState(at item: Int) -> Bool {
 }
 
 func saveData() {
-    UserDefaults.standard.set(ToDoItems, forKey: "ToDoDataKey")
-    UserDefaults.standard.synchronize()
 }
 
 func loadData() {
-    if let array = UserDefaults.standard.array(forKey: "ToDoDataKey") as? [[String: Any]] {
-        ToDoItems = array
-    } else {
-        ToDoItems = []
-    }
 }
