@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UserNotifications
+import UIKit
 
 var ToDoItems: [[String: Any]] {
     set {
@@ -26,10 +28,12 @@ var ToDoItems: [[String: Any]] {
 
 func addItem(nameItem: String, isCompleted: Bool = false) {
     ToDoItems.append(["Name": nameItem, "isCompleted": isCompleted])
+    setBadge()
 }
 
 func removeItem(at index: Int) {
     ToDoItems.remove(at: index)
+    setBadge()
 }
 
 func moveItem(from: Int, to: Int) {
@@ -41,6 +45,7 @@ func moveItem(from: Int, to: Int) {
 func changeState(at item: Int) -> Bool {
     ToDoItems[item]["isCompleted"] = !(ToDoItems[item]["isCompleted"] as! Bool)
     saveData()
+    setBadge()
     return ToDoItems[item]["isCompleted"] as! Bool
 }
 
@@ -48,4 +53,20 @@ func saveData() {
 }
 
 func loadData() {
+}
+
+func requestForNotification() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.badge]) { (isEnabled, error) in
+
+    }
+}
+
+func setBadge() {
+    var countUncheck = 0
+    for item in ToDoItems {
+        if (item["isCompleted"] as? Bool) == false {
+            countUncheck = countUncheck + 1
+        }
+    }
+    UIApplication.shared.applicationIconBadgeNumber = countUncheck
 }
