@@ -68,9 +68,9 @@ class TableViewController: UITableViewController {
         cell.textLabel?.text = currentItem["Name"] as? String
 
         if (currentItem["isCompleted"] as! Bool) {
-            cell.accessoryType = .checkmark
+            cell.imageView?.image = #imageLiteral(resourceName: "check")
         } else {
-            cell.accessoryType = .none
+            cell.imageView?.image = #imageLiteral(resourceName: "uncheck")
         }
         
         
@@ -97,9 +97,9 @@ class TableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "check")
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            tableView.cellForRow(at: indexPath)?.imageView?.image = #imageLiteral(resourceName: "uncheck")
         }
         
     
