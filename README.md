@@ -1,7 +1,7 @@
 # ToDoList
 Мобильное приложение для создания списка дел под iOS на Swift.
 ## Скриншоты
-
+<img src="https://user-images.githubusercontent.com/16274235/43049020-7a5e488e-8e0a-11e8-88ed-c1b4c661de0d.png" />
 ## Лицензия
 
     MIT License
