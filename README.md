@@ -2,6 +2,8 @@
 Мобильное приложение для создания списка дел под iOS на Swift.
 ## Скриншоты
 <img src="https://user-images.githubusercontent.com/16274235/43049020-7a5e488e-8e0a-11e8-88ed-c1b4c661de0d.png" />
+<img src="https://user-images.githubusercontent.com/16274235/43049034-c89708ec-8e0a-11e8-99ae-c04b1bd31530.png" />
+<img src="https://user-images.githubusercontent.com/16274235/43049035-cb000a34-8e0a-11e8-8947-913fbdc53c04.png" />
 ## Лицензия
 
     MIT License
