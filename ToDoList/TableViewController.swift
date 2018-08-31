@@ -10,10 +10,18 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBOutlet weak var moveButton: UIBarButtonItem!
+    
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.tableView.reloadData()
+        }
+        
+        if (moveButton.title == "Edit") {
+            moveButton.title = "Confirm"
+        } else {
+            moveButton.title = "Edit"
         }
     }
     
@@ -93,7 +101,7 @@ class TableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        // Return false if you do not want the specified item to be
         return true
     }
 
