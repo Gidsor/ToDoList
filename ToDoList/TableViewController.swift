@@ -18,10 +18,10 @@ class TableViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        if (moveButton.title == "Edit") {
-            moveButton.title = "Confirm"
+        if (moveButton.title == "Confirm") {
+            moveButton.title = "Move"
         } else {
-            moveButton.title = "Edit"
+            moveButton.title = "Confirm"
         }
     }
     
